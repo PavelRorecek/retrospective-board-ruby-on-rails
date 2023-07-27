@@ -1,0 +1,24 @@
+<div class="container mx-auto flex-col h-fill px-12 ">
+  <%= turbo_frame_tag "board" do %>
+    <div class="w-fill">
+      <div class="flex flex-row items-center">
+        <%= render @board %>
+
+        <div class="ml-8"></div>
+        <%= link_to "Edit this board", edit_board_path(@board) %>
+        <div class="mx-2">|</div>
+        <%= link_to "Back to boards", boards_path, "data-turbo-frame": "_top" %>
+        <div class="mx-2">|</div>
+        <%= button_to "Destroy this board", board_path(@board), method: :delete %>
+      </div>
+    </div>
+  <% end %>
+
+  <div id="columns" class="flex flex-grow columns-3 gap-12 mt-12">
+    <% @board.columns.each do |column| %>
+      <div class="w-1/3">
+        <%= render column %>
+      </div>
+    <% end %>
+  </div>
+</div>

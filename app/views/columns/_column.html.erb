@@ -1,0 +1,14 @@
+<div id="<%= dom_id column %>">
+  <div class="w-full p-4 bg-slate-300 color-white rounded-lg shadow">
+    <h3 class="text-2xl font-medium mb-6 mx-auto text-center"><%= column.name %></h3>
+    <div class="columns-1 lg:columns-2">
+      <% column.tickets.each do |ticket| %>
+        <div class="pb-4">
+          <%= render ticket %>
+        </div>
+      <% end %>
+    </div>
+    <div class="mt-1"></div>
+    <%= turbo_frame_tag "new_ticket", src: new_board_column_ticket_path(column.board_id, column), target: "_top" %>
+  </div>
+</div>

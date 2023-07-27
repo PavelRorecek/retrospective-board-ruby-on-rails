@@ -1,0 +1,12 @@
+<h1>New ticket</h1>
+
+<%= turbo_frame_tag "new_ticket" do %>
+  <%= form_with(model: [@board, @column, @ticket], url: board_column_tickets_path(@board, @column)) do |form| %>
+    <div class="flex items-center field">
+      <%= form.text_field :message, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5" %>
+      <button type="submit" class="custom-submit-button">
+        <p class="text-2xl px-2">+</p>
+      </button>
+    </div>
+  <% end %>
+<% end %>
